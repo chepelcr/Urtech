@@ -33,7 +33,7 @@ export function Footer() {
           <h4 className="text-white font-mono text-sm tracking-widest uppercase">{t.footer.socials}</h4>
           <nav className="flex flex-col space-y-3">
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Instagram size={16} /> Instagram</a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><PlayCircle size={16} /> SoundCloud</a>
+            <a href="https://soundcloud.app.goo.gl/UyrKS" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><PlayCircle size={16} /> SoundCloud</a>
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Headphones size={16} /> Spotify</a>
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Youtube size={16} /> YouTube</a>
           </nav>
@@ -44,7 +44,7 @@ export function Footer() {
           <nav className="flex flex-col space-y-3">
             <Link href="/bookings"><span className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">{t.nav.bookings}</span></Link>
             <Link href="/press"><span className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">{t.nav.press}</span></Link>
-            <a href="mailto:mgmt@urtech.com" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Mail size={16} /> mgmt@urtech.com</a>
+            <a href="mailto:directlyurtech07@gmail.com" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Mail size={16} /> directlyurtech07@gmail.com</a>
           </nav>
         </div>
 

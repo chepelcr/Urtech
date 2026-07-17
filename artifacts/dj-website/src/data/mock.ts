@@ -2,9 +2,10 @@ export interface Mix {
   id: string;
   title: string;
   duration: string;
-  platform: 'SoundCloud' | 'Beatport' | 'Resident Advisor';
+  platform: 'SoundCloud' | 'Beatport' | 'Resident Advisor' | 'YouTube';
   date: string;
   plays: string;
+  url?: string;
 }
 
 export interface Release {
@@ -51,7 +52,7 @@ export interface Testimonial {
 }
 
 export const mockMixes: Mix[] = [
-  { id: '1', title: 'Berghain Residency - Nov 2023', duration: '04:15:22', platform: 'SoundCloud', date: '2023-11-15', plays: '1.2M' },
+  { id: '1', title: 'Morning Glory', duration: '00:00:00', platform: 'SoundCloud', date: '2024-01-01', plays: '--', url: 'https://on.soundcloud.com/YgMUx1NTXkgiRW8uO8' },
   { id: '2', title: 'Boiler Room Berlin - UR TECH', duration: '01:05:40', platform: 'YouTube', date: '2023-08-20', plays: '4.5M' },
   { id: '3', title: 'Awakenings Festival 2023', duration: '02:30:00', platform: 'SoundCloud', date: '2023-06-12', plays: '850K' },
   { id: '4', title: 'Dark Ambient Focus Mix', duration: '01:45:10', platform: 'Resident Advisor', date: '2023-04-05', plays: '200K' },

@@ -11,7 +11,12 @@ export function MixCard({ mix }: { mix: Mix }) {
   
   const isCurrent = currentTrack?.id === mix.id;
 
-  const handlePlay = () => {
+  const handlePlay = (e: React.MouseEvent) => {
+    if (mix.url) {
+      // open real link; don't swallow the click
+      return;
+    }
+    e.preventDefault();
     if (isCurrent) {
       togglePlayPause();
     } else {
@@ -19,13 +24,25 @@ export function MixCard({ mix }: { mix: Mix }) {
     }
   };
 
+  const Wrapper = mix.url
+    ? ({ children }: { children: React.ReactNode }) => (
+        <a href={mix.url} target="_blank" rel="noopener noreferrer" className="group relative flex flex-col gap-4 cursor-pointer block">
+          {children}
+        </a>
+      )
+    : ({ children }: { children: React.ReactNode }) => (
+        <motion.div
+          className="group relative flex flex-col gap-4 cursor-pointer"
+          whileHover={{ y: -5 }}
+          transition={{ duration: 0.2 }}
+          onClick={handlePlay}
+        >
+          {children}
+        </motion.div>
+      );
+
   return (
-    <motion.div 
-      className="group relative flex flex-col gap-4 cursor-pointer"
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.2 }}
-      onClick={handlePlay}
-    >
+    <Wrapper>
       <div className="relative aspect-square w-full bg-gray-900 border border-white/5 overflow-hidden">
         {/* Placeholder Artwork - Abstract gradient/noise simulation */}
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black"></div>
@@ -69,6 +86,6 @@ export function MixCard({ mix }: { mix: Mix }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </Wrapper>
   );
 }
