@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>UR TECH</title>
+    <script>
+      // GitHub Pages SPA redirect — preserves the path and query string
+      // so the React/Wouter router picks up the correct route on load.
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1).join('/') +
+        '/?p=' + encodeURIComponent(l.pathname + l.search) +
+        (l.hash ? '&h=' + encodeURIComponent(l.hash.slice(1)) : '')
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
