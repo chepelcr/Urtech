@@ -38,7 +38,7 @@ export function Navbar() {
       >
         <div className="max-w-screen-2xl mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/" className="text-3xl font-display tracking-widest text-white hover:text-gray-300 transition-colors z-50 relative">
-            NOCTURN
+            UR TECH
           </Link>
 
           {/* Desktop Nav */}

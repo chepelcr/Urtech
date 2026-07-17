@@ -46,20 +46,20 @@ export default function About() {
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             <p>
-              Emerging from the depths of Berlin's industrial landscape, NOCTURN has carved out a sonic territory that is entirely his own. Blurring the lines between punishing warehouse techno and expansive dark ambient, his sets are a masterclass in tension and psychological architecture.
+              Emerging from the depths of Berlin's industrial landscape, UR TECH has carved out a sonic territory that is entirely his own. Blurring the lines between punishing warehouse techno and expansive dark ambient, his sets are a masterclass in tension and psychological architecture.
             </p>
             <p>
               "I treat the club not as a place of celebration, but as a pressure chamber," he explains. "The frequencies need to physically interact with the room and the bodies within it. It's about stripping away the unnecessary and leaving only the essential force."
             </p>
             <h3 className="font-display text-3xl uppercase tracking-widest text-white mt-12 mb-6">The Sound</h3>
             <p>
-              With releases on seminal labels like Ostgut Ton and Klockworks, NOCTURN's production relies heavily on hardware synthesis, field recordings, and tape distortion. His latest EP, <i>Void State</i>, was recorded entirely using customized modular rigs inside an abandoned brutalist factory, capturing the natural reverb of decay.
+              With releases on seminal labels like Ostgut Ton and Klockworks, UR TECH's production relies heavily on hardware synthesis, field recordings, and tape distortion. His latest EP, <i>Void State</i>, was recorded entirely using customized modular rigs inside an abandoned brutalist factory, capturing the natural reverb of decay.
             </p>
             <blockquote className="font-display text-3xl md:text-4xl uppercase text-white/80 border-l-4 border-white/20 pl-6 my-12 tracking-wider">
               "The silence between the kicks is just as heavy as the kick itself."
             </blockquote>
             <p>
-              Holding residencies at some of Europe's most formidable institutions, a NOCTURN set is an endurance test—a meticulously crafted journey that demands surrender.
+              Holding residencies at some of Europe's most formidable institutions, a UR TECH set is an endurance test—a meticulously crafted journey that demands surrender.
             </p>
           </motion.div>
         </div>

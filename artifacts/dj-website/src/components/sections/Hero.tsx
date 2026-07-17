@@ -24,7 +24,7 @@ export function Hero() {
           className="text-center"
         >
           <h1 className="text-[12vw] md:text-[15vw] leading-none font-display tracking-widest text-white m-0 p-0 mix-blend-difference select-none text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">
-            NOCTURN
+            UR TECH
           </h1>
         </motion.div>
 

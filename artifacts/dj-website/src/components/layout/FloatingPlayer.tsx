@@ -41,7 +41,7 @@ export function FloatingPlayer() {
             </div>
             <div className="flex flex-col min-w-0">
               <span className="text-white font-mono text-sm truncate">{currentTrack.title}</span>
-              <span className="text-gray-500 font-mono text-xs truncate">NOCTURN</span>
+              <span className="text-gray-500 font-mono text-xs truncate">UR TECH</span>
             </div>
           </div>
 

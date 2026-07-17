@@ -13,12 +13,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLang] = useState<Language>(() => {
-    const saved = localStorage.getItem('nocturn-lang') as Language;
+    const saved = localStorage.getItem('urtech-lang') as Language;
     return saved === 'es' ? 'es' : 'en';
   });
 
   useEffect(() => {
-    localStorage.setItem('nocturn-lang', lang);
+    localStorage.setItem('urtech-lang', lang);
   }, [lang]);
 
   const toggleLang = () => {

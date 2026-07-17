@@ -52,12 +52,12 @@ export interface Testimonial {
 
 export const mockMixes: Mix[] = [
   { id: '1', title: 'Berghain Residency - Nov 2023', duration: '04:15:22', platform: 'SoundCloud', date: '2023-11-15', plays: '1.2M' },
-  { id: '2', title: 'Boiler Room Berlin - NOCTURN', duration: '01:05:40', platform: 'YouTube', date: '2023-08-20', plays: '4.5M' },
+  { id: '2', title: 'Boiler Room Berlin - UR TECH', duration: '01:05:40', platform: 'YouTube', date: '2023-08-20', plays: '4.5M' },
   { id: '3', title: 'Awakenings Festival 2023', duration: '02:30:00', platform: 'SoundCloud', date: '2023-06-12', plays: '850K' },
   { id: '4', title: 'Dark Ambient Focus Mix', duration: '01:45:10', platform: 'Resident Advisor', date: '2023-04-05', plays: '200K' },
   { id: '5', title: 'Dekmantel Podcast 450', duration: '01:10:00', platform: 'SoundCloud', date: '2022-11-30', plays: '340K' },
   { id: '6', title: 'Tresor Club Closing Set', duration: '03:20:15', platform: 'SoundCloud', date: '2022-09-18', plays: '980K' },
-  { id: '7', title: 'HÖR Berlin - NOCTURN', duration: '01:00:00', platform: 'YouTube', date: '2022-05-10', plays: '1.1M' },
+  { id: '7', title: 'HÖR Berlin - UR TECH', duration: '01:00:00', platform: 'YouTube', date: '2022-05-10', plays: '1.1M' },
   { id: '8', title: 'Printworks London Final Season', duration: '02:15:00', platform: 'SoundCloud', date: '2022-02-28', plays: '670K' },
 ];
 
@@ -104,7 +104,7 @@ export const mockEvents: Event[] = [
 ];
 
 export const mockTestimonials: Testimonial[] = [
-  { id: '1', name: 'Ben Klock', title: 'Artist', organization: 'Klockworks', quote: '"NOCTURN’s sets are a masterclass in tension and release. Absolute control of the floor."' },
+  { id: '1', name: 'Ben Klock', title: 'Artist', organization: 'Klockworks', quote: '"UR TECH’s sets are a masterclass in tension and release. Absolute control of the floor."' },
   { id: '2', name: 'Nina Kraviz', title: 'Artist', organization: 'Trip', quote: '"Raw, industrial energy with an incredible ear for spatial design. Truly next level."' },
   { id: '3', name: 'Resident Advisor', title: 'Editorial', organization: 'RA', quote: '"The most compelling new voice in Berlin\'s underground techno scene right now."' },
   { id: '4', name: 'Mixmag', title: 'Editorial', organization: 'Mixmag', quote: '"A brutal yet deeply emotional approach to electronic music."' },

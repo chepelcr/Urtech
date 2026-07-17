@@ -12,7 +12,7 @@ export function Footer() {
         
         <div className="flex flex-col space-y-6">
           <Link href="/" className="text-4xl font-display tracking-widest text-white inline-block">
-            NOCTURN
+            UR TECH
           </Link>
           <p className="text-gray-500 font-mono text-xs max-w-xs leading-relaxed">
             Berlin-based underground electronic music artist. Industrial decay, cinematic tension, absolute control.
@@ -44,7 +44,7 @@ export function Footer() {
           <nav className="flex flex-col space-y-3">
             <Link href="/bookings"><span className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">{t.nav.bookings}</span></Link>
             <Link href="/press"><span className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">{t.nav.press}</span></Link>
-            <a href="mailto:mgmt@nocturn.com" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Mail size={16} /> mgmt@nocturn.com</a>
+            <a href="mailto:mgmt@urtech.com" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Mail size={16} /> mgmt@urtech.com</a>
           </nav>
         </div>
 
@@ -52,7 +52,7 @@ export function Footer() {
 
       <div className="max-w-screen-2xl mx-auto mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-gray-600 text-xs font-mono">
-          &copy; {new Date().getFullYear()} NOCTURN. {t.footer.rights}
+          &copy; {new Date().getFullYear()} UR TECH. {t.footer.rights}
         </p>
         <div className="flex items-center space-x-6">
           <a href="#" className="text-gray-600 hover:text-gray-300 text-xs font-mono">{t.footer.privacy}</a>
