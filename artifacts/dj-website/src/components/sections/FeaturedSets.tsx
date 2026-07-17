@@ -3,12 +3,16 @@ import { motion } from 'framer-motion';
 import { useLang } from '../../context/LanguageContext';
 import { mockMixes } from '../../data/mock';
 import { MixCard } from '../cards/MixCard';
+import { SoundCloudEmbed } from '../SoundCloudEmbed';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 
+const MORNING_GLORY_URL = 'https://api.soundcloud.com/tracks/1514050228';
+
 export function FeaturedSets() {
   const { t } = useLang();
-  const featured = mockMixes.slice(0, 3);
+  // show the 3 non-linked mixes as cards below the embedded player
+  const featured = mockMixes.filter(m => !m.url).slice(0, 3);
 
   return (
     <section className="py-24 px-6 bg-[#0a0a0a] border-t border-white/5 relative z-10">
@@ -27,6 +31,16 @@ export function FeaturedSets() {
           </Link>
         </div>
 
+        {/* Live SoundCloud player — Morning Glory */}
+        <div className="mb-16">
+          <SoundCloudEmbed
+            url={MORNING_GLORY_URL}
+            title="Morning Glory"
+            variant="visual"
+          />
+        </div>
+
+        {/* Other featured mix cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {featured.map((mix, i) => (
             <motion.div
