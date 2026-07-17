@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Premium DJ Website"
+version = "1.0.0"
+id = "artifacts/dj-website"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24062
+
+[services.development]
+run = "pnpm --filter @workspace/dj-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dj-website", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/dj-website/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24062"
+BASE_PATH = "/"
