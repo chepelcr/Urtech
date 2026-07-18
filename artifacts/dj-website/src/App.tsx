@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
 import { LanguageProvider } from './context/LanguageContext';
 import { AudioProvider } from './context/AudioContext';
+import { ScrollToTop } from './components/ScrollToTop';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -41,6 +42,7 @@ function App() {
       <LanguageProvider>
         <AudioProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <ScrollToTop />
             <Router />
           </WouterRouter>
         </AudioProvider>

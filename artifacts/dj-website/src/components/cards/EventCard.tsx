@@ -1,7 +1,7 @@
 import React from 'react';
 import { Event } from '../../data/mock';
 import { useLang } from '../../context/LanguageContext';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Instagram } from 'lucide-react';
 
 export function EventCard({ event }: { event: Event }) {
   const { t } = useLang();
@@ -38,9 +38,20 @@ export function EventCard({ event }: { event: Event }) {
 
       <div className="flex md:items-center justify-end">
         {isPast ? (
-          <span className="font-mono text-xs text-gray-600 tracking-widest uppercase px-4 py-2 border border-gray-800">
-            {t.events.past}
-          </span>
+          event.instagramUrl ? (
+            <a
+              href={event.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 font-mono text-xs text-gray-400 hover:text-white tracking-widest uppercase px-4 py-2 border border-gray-800 hover:border-gray-500 transition-colors"
+            >
+              <Instagram size={13} /> Ver en Instagram
+            </a>
+          ) : (
+            <span className="font-mono text-xs text-gray-600 tracking-widest uppercase px-4 py-2 border border-gray-800">
+              {t.events.past}
+            </span>
+          )
         ) : event.soldOut ? (
           <span className="font-mono text-xs text-red-500 tracking-widest uppercase px-4 py-2 border border-red-900/50 bg-red-900/10">
             {t.events.soldOut}

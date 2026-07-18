@@ -5,6 +5,56 @@ import { FloatingPlayer } from '../components/layout/FloatingPlayer';
 import { useLang } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 
+function BioContent() {
+  const { lang } = useLang();
+
+  if (lang === 'es') {
+    return (
+      <motion.div
+        className="md:col-span-7 prose prose-invert prose-p:font-serif prose-p:text-lg prose-p:leading-relaxed prose-p:text-gray-300 max-w-none"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+      >
+        <p>
+          Urtech es el alias detrás del cual se mueve entre Tech House y Techno, construyendo sets que llevan la pista de un groove hipnótico a la energía pura. Con base en Miramar, Puntarenas, Costa Rica.
+        </p>
+        <p>
+          Urtech nació casi por destino: el apellido Urtecho ya tenía el nombre escondido. Hoy, ese alias representa Tech House y Techno con base en Puntarenas.
+        </p>
+        <blockquote className="font-display text-3xl md:text-4xl uppercase text-white/80 border-l-4 border-white/20 pl-6 my-12 tracking-wider">
+          "Del groove hipnótico a la energía pura."
+        </blockquote>
+        <p>
+          Urtech nació desde abajo: sets gratis con una planta eléctrica en Puntarenas, con nada más que ganas de compartir música. Poco a poco el público lo fue adoptando, y ese apoyo lo llevó a convertirse en el DJ de Tech House y Techno que es hoy.
+        </p>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      className="md:col-span-7 prose prose-invert prose-p:font-serif prose-p:text-lg prose-p:leading-relaxed prose-p:text-gray-300 max-w-none"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 0.6 }}
+    >
+      <p>
+        Urtech is the alias behind which he moves between Tech House and Techno, building sets that take the floor from a hypnotic groove to pure energy. Based in Miramar, Puntarenas, Costa Rica.
+      </p>
+      <p>
+        Urtech was born almost by destiny — the last name Urtecho already had the name hidden within it. Today, that alias represents Tech House and Techno rooted in Puntarenas.
+      </p>
+      <blockquote className="font-display text-3xl md:text-4xl uppercase text-white/80 border-l-4 border-white/20 pl-6 my-12 tracking-wider">
+        "From hypnotic groove to pure energy."
+      </blockquote>
+      <p>
+        Urtech started from the ground up — free sets powered by a generator in Puntarenas, with nothing but a drive to share music. Little by little the crowd adopted him, and that support pushed him to become the Tech House and Techno DJ he is today.
+      </p>
+    </motion.div>
+  );
+}
+
 export default function About() {
   const { t } = useLang();
 
@@ -39,29 +89,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          <motion.div 
-            className="md:col-span-7 prose prose-invert prose-p:font-serif prose-p:text-lg prose-p:leading-relaxed prose-p:text-gray-300 max-w-none"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            <p>
-              Emerging from the depths of Berlin's industrial landscape, UR TECH has carved out a sonic territory that is entirely his own. Blurring the lines between punishing warehouse techno and expansive dark ambient, his sets are a masterclass in tension and psychological architecture.
-            </p>
-            <p>
-              "I treat the club not as a place of celebration, but as a pressure chamber," he explains. "The frequencies need to physically interact with the room and the bodies within it. It's about stripping away the unnecessary and leaving only the essential force."
-            </p>
-            <h3 className="font-display text-3xl uppercase tracking-widest text-white mt-12 mb-6">The Sound</h3>
-            <p>
-              With releases on seminal labels like Ostgut Ton and Klockworks, UR TECH's production relies heavily on hardware synthesis, field recordings, and tape distortion. His latest EP, <i>Void State</i>, was recorded entirely using customized modular rigs inside an abandoned brutalist factory, capturing the natural reverb of decay.
-            </p>
-            <blockquote className="font-display text-3xl md:text-4xl uppercase text-white/80 border-l-4 border-white/20 pl-6 my-12 tracking-wider">
-              "The silence between the kicks is just as heavy as the kick itself."
-            </blockquote>
-            <p>
-              Holding residencies at some of Europe's most formidable institutions, a UR TECH set is an endurance test—a meticulously crafted journey that demands surrender.
-            </p>
-          </motion.div>
+          <BioContent />
         </div>
       </main>
 

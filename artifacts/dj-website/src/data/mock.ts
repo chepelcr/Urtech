@@ -40,6 +40,7 @@ export interface Event {
   headliner: boolean;
   status: 'upcoming' | 'past';
   ticketUrl?: string;
+  instagramUrl?: string;
   soldOut?: boolean;
 }
 
@@ -94,14 +95,12 @@ export const mockGallery: GalleryImage[] = [
 ];
 
 export const mockEvents: Event[] = [
-  { id: '1', venue: 'Berghain', city: 'Berlin', country: 'Germany', date: '2024-11-15', headliner: true, status: 'upcoming', ticketUrl: '#', soldOut: true },
-  { id: '2', venue: 'Fabric', city: 'London', country: 'UK', date: '2024-12-05', headliner: true, status: 'upcoming', ticketUrl: '#' },
-  { id: '3', venue: 'Basement', city: 'New York', country: 'USA', date: '2024-12-31', headliner: true, status: 'upcoming', ticketUrl: '#' },
-  { id: '4', venue: 'Radion', city: 'Amsterdam', country: 'Netherlands', date: '2025-01-12', headliner: false, status: 'upcoming', ticketUrl: '#' },
-  { id: '5', venue: 'Tresor', city: 'Berlin', country: 'Germany', date: '2023-10-20', headliner: true, status: 'past' },
-  { id: '6', venue: 'Printworks', city: 'London', country: 'UK', date: '2023-09-15', headliner: false, status: 'past' },
-  { id: '7', venue: 'Movement Festival', city: 'Detroit', country: 'USA', date: '2023-05-28', headliner: false, status: 'past' },
-  { id: '8', venue: 'Awakenings Festival', city: 'Amsterdam', country: 'Netherlands', date: '2023-06-12', headliner: true, status: 'past' },
+  // Past events — real shows, linked to Instagram
+  { id: '1', venue: 'Live Set', city: 'Puntarenas', country: 'Costa Rica', date: '2025-07-17', headliner: true, status: 'past', instagramUrl: 'https://www.instagram.com/reel/DZ5XXfxIJTW/' },
+  { id: '2', venue: 'Live Set', city: 'Puntarenas', country: 'Costa Rica', date: '2025-05-01', headliner: true, status: 'past', instagramUrl: 'https://www.instagram.com/p/DWh-PGBjKcm/' },
+  { id: '3', venue: 'Live Set', city: 'Puntarenas', country: 'Costa Rica', date: '2025-03-15', headliner: true, status: 'past', instagramUrl: 'https://www.instagram.com/p/DSyBkPCAcoZ/' },
+  { id: '4', venue: 'Live Set', city: 'Puntarenas', country: 'Costa Rica', date: '2024-03-10', headliner: false, status: 'past', instagramUrl: 'https://www.instagram.com/p/C4uc5PsuSaw/' },
+  { id: '5', venue: 'Live Set', city: 'Puntarenas', country: 'Costa Rica', date: '2023-06-20', headliner: false, status: 'past', instagramUrl: 'https://www.instagram.com/p/CtK5ZRmOWQ0/' },
 ];
 
 export const mockTestimonials: Testimonial[] = [

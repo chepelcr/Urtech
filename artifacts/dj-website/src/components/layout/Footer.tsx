@@ -15,7 +15,7 @@ export function Footer() {
             UR TECH
           </Link>
           <p className="text-gray-500 font-mono text-xs max-w-xs leading-relaxed">
-            Berlin-based underground electronic music artist. Industrial decay, cinematic tension, absolute control.
+            Tech House & Techno. Puntarenas, Costa Rica.
           </p>
         </div>
 
@@ -32,7 +32,7 @@ export function Footer() {
         <div className="flex flex-col space-y-4">
           <h4 className="text-white font-mono text-sm tracking-widest uppercase">{t.footer.socials}</h4>
           <nav className="flex flex-col space-y-3">
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Instagram size={16} /> Instagram</a>
+            <a href="https://www.instagram.com/urtech.07" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Instagram size={16} /> Instagram</a>
             <a href="https://soundcloud.app.goo.gl/UyrKS" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><PlayCircle size={16} /> SoundCloud</a>
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Headphones size={16} /> Spotify</a>
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Youtube size={16} /> YouTube</a>
