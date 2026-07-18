@@ -60,13 +60,6 @@ export interface Testimonial {
 
 export const mockMixes: Mix[] = [
   { id: '1', title: 'Morning Glory', duration: '00:00:00', platform: 'SoundCloud', date: '2024-01-01', plays: '--', url: 'https://soundcloud.com/user-42101134/morning-glory' },
-  { id: '2', title: 'Boiler Room Berlin - UR TECH', duration: '01:05:40', platform: 'YouTube', date: '2023-08-20', plays: '4.5M' },
-  { id: '3', title: 'Awakenings Festival 2023', duration: '02:30:00', platform: 'SoundCloud', date: '2023-06-12', plays: '850K' },
-  { id: '4', title: 'Dark Ambient Focus Mix', duration: '01:45:10', platform: 'Resident Advisor', date: '2023-04-05', plays: '200K' },
-  { id: '5', title: 'Dekmantel Podcast 450', duration: '01:10:00', platform: 'SoundCloud', date: '2022-11-30', plays: '340K' },
-  { id: '6', title: 'Tresor Club Closing Set', duration: '03:20:15', platform: 'SoundCloud', date: '2022-09-18', plays: '980K' },
-  { id: '7', title: 'HÖR Berlin - UR TECH', duration: '01:00:00', platform: 'YouTube', date: '2022-05-10', plays: '1.1M' },
-  { id: '8', title: 'Printworks London Final Season', duration: '02:15:00', platform: 'SoundCloud', date: '2022-02-28', plays: '670K' },
 ];
 
 export const mockReleases: Release[] = [
@@ -86,18 +79,12 @@ export const mockVideos: Video[] = [
 ];
 
 export const mockGallery: GalleryImage[] = [
-  { id: '1', event: 'Berghain, Berlin', photographer: 'Marie Staggat', color: '#1a1a1a' },
-  { id: '2', event: 'Printworks, London', photographer: 'Dan Medhurst', color: '#2a2a2a' },
-  { id: '3', event: 'Awakenings, Amsterdam', photographer: 'Photo-Company', color: '#111' },
-  { id: '4', event: 'Tresor, Berlin', photographer: 'George Nebieridze', color: '#0d0d0d' },
-  { id: '5', event: 'Fabric, London', photographer: 'Danny North', color: '#1f1f1f' },
-  { id: '6', event: 'Mutek, Montreal', photographer: 'Bruno Destombes', color: '#252525' },
-  { id: '7', event: 'Movement, Detroit', photographer: 'Stephen Bondio', color: '#151515' },
-  { id: '8', event: 'Bassiani, Tbilisi', photographer: 'Saba Gorgodze', color: '#0f0f0f' },
-  { id: '9', event: 'Dekmantel, Amsterdam', photographer: 'Bart Heemskerk', color: '#222' },
-  { id: '10', event: 'Gashouder, Amsterdam', photographer: 'Jorrit Lousko', color: '#1b1b1b' },
-  { id: '11', event: 'Watergate, Berlin', photographer: 'Kasskara', color: '#181818' },
-  { id: '12', event: 'Studio Session', photographer: 'Marie Staggat', color: '#2c2c2c' },
+  { id: '1', event: 'La Casa del Camarón', photographer: '', color: '#1a1a1a' },
+  { id: '2', event: 'Live Set — Puntarenas', photographer: '', color: '#2a2a2a' },
+  { id: '3', event: 'Live Set — Puntarenas', photographer: '', color: '#111' },
+  { id: '4', event: 'En el Booth', photographer: '', color: '#0d0d0d' },
+  { id: '5', event: 'Live Set — Puntarenas', photographer: '', color: '#1f1f1f' },
+  { id: '6', event: 'La Casa del Camarón', photographer: '', color: '#252525' },
 ];
 
 export const mockEvents: Event[] = [

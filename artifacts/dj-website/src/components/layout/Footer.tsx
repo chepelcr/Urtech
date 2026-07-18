@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'wouter';
 import { useLang } from '../../context/LanguageContext';
-import { Instagram, Youtube, Twitter, PlayCircle, Headphones, Mail } from 'lucide-react';
+import { Instagram, PlayCircle, Mail } from 'lucide-react';
 
 export function Footer() {
   const { t } = useLang();
@@ -33,9 +33,7 @@ export function Footer() {
           <h4 className="text-white font-mono text-sm tracking-widest uppercase">{t.footer.socials}</h4>
           <nav className="flex flex-col space-y-3">
             <a href="https://www.instagram.com/urtech.07" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Instagram size={16} /> Instagram</a>
-            <a href="https://soundcloud.app.goo.gl/UyrKS" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><PlayCircle size={16} /> SoundCloud</a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Headphones size={16} /> Spotify</a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><Youtube size={16} /> YouTube</a>
+            <a href="https://soundcloud.com/user-42101134" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2"><PlayCircle size={16} /> SoundCloud</a>
           </nav>
         </div>
 

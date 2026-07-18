@@ -1,39 +1,39 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
-import { useLang } from '../context/LanguageContext';
+import { useSoundCloud } from '../context/SoundCloudContext';
+
+const TRACK_API_URL = 'https://api.soundcloud.com/tracks/1514050228';
+const TRACK_PAGE_URL = 'https://soundcloud.com/user-42101134/morning-glory';
+
+const embedSrc =
+  `https://w.soundcloud.com/player/?url=${encodeURIComponent(TRACK_API_URL)}` +
+  `&color=%23ffffff` +
+  `&auto_play=false` +
+  `&hide_related=true` +
+  `&show_comments=false` +
+  `&show_user=true` +
+  `&show_reposts=false` +
+  `&show_teaser=false` +
+  `&visual=true`;
 
 interface SoundCloudEmbedProps {
-  url: string;
-  title: string;
+  title?: string;
   artist?: string;
-  /** 'visual' shows the waveform/artwork player; 'compact' shows the classic slim bar */
-  variant?: 'visual' | 'compact';
 }
 
 export function SoundCloudEmbed({
-  url,
-  title,
+  title = 'Morning Glory',
   artist = 'UR TECH',
-  variant = 'visual',
 }: SoundCloudEmbedProps) {
-  const { t } = useLang();
-  const isVisual = variant === 'visual';
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const { registerWidget } = useSoundCloud();
 
-  // Use the resolved API track URL so SoundCloud's widget accepts it
-  const trackApiUrl = url.startsWith('https://api.soundcloud.com')
-    ? url
-    : url; // fallback: pass through
-  const embedSrc =
-    `https://w.soundcloud.com/player/?url=${encodeURIComponent(trackApiUrl)}` +
-    `&color=%23ffffff` +
-    `&auto_play=false` +
-    `&hide_related=true` +
-    `&show_comments=false` +
-    `&show_user=true` +
-    `&show_reposts=false` +
-    `&show_teaser=false` +
-    `&visual=${isVisual ? 'true' : 'false'}`;
+  const handleLoad = () => {
+    if (iframeRef.current) {
+      registerWidget(iframeRef.current, title);
+    }
+  };
 
   return (
     <motion.div
@@ -43,21 +43,19 @@ export function SoundCloudEmbed({
       transition={{ duration: 0.7 }}
       className="w-full"
     >
-      {/* Header row */}
+      {/* Header */}
       <div className="flex items-end justify-between mb-4">
         <div className="flex flex-col gap-1">
           <span className="font-mono text-[10px] text-gray-500 uppercase tracking-[0.2em]">
-            {t.mixes.nowPlaying ?? 'Now Playing'}
+            Now Playing
           </span>
           <h3 className="font-display text-2xl md:text-4xl text-white tracking-widest uppercase leading-none">
             {title}
           </h3>
-          <span className="font-mono text-xs text-gray-400 tracking-widest">
-            {artist}
-          </span>
+          <span className="font-mono text-xs text-gray-400 tracking-widest">{artist}</span>
         </div>
         <a
-          href={url}
+          href={TRACK_PAGE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 font-mono text-[10px] text-gray-500 hover:text-white transition-colors uppercase tracking-widest border border-white/10 px-4 py-2 hover:border-white/30"
@@ -67,12 +65,9 @@ export function SoundCloudEmbed({
       </div>
 
       {/* Player iframe */}
-      <div
-        className={`w-full border border-white/10 overflow-hidden ${
-          isVisual ? 'h-[300px] md:h-[380px]' : 'h-[166px]'
-        }`}
-      >
+      <div className="w-full border border-white/10 overflow-hidden h-[300px] md:h-[380px]">
         <iframe
+          ref={iframeRef}
           title={`${title} — ${artist}`}
           width="100%"
           height="100%"
@@ -81,10 +76,10 @@ export function SoundCloudEmbed({
           allow="autoplay"
           src={embedSrc}
           className="block"
+          onLoad={handleLoad}
         />
       </div>
 
-      {/* Bottom rule */}
       <div className="mt-4 h-px bg-white/5" />
     </motion.div>
   );
