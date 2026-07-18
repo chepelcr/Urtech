@@ -37,11 +37,17 @@ export interface Event {
   city: string;
   country: string;
   date: string;
+  time?: string;
   headliner: boolean;
   status: 'upcoming' | 'past';
   ticketUrl?: string;
   instagramUrl?: string;
   soldOut?: boolean;
+  cover?: string;
+  lineup?: string[];
+  specialGuest?: string;
+  videoUrl?: string;
+  featured?: boolean;
 }
 
 export interface Testimonial {
@@ -95,8 +101,23 @@ export const mockGallery: GalleryImage[] = [
 ];
 
 export const mockEvents: Event[] = [
-  // Past events — real shows, linked to Instagram
-  { id: '1', venue: 'Live Set', city: 'Puntarenas', country: 'Costa Rica', date: '2025-07-17', headliner: true, status: 'past', instagramUrl: 'https://www.instagram.com/reel/DZ5XXfxIJTW/' },
+  // Past events — real shows
+  {
+    id: '1',
+    venue: 'La Casa del Camarón',
+    city: 'Puntarenas',
+    country: 'Costa Rica',
+    date: '2026-06-26',
+    time: '10:00 PM → Amanecer',
+    headliner: true,
+    status: 'past',
+    featured: true,
+    cover: 'Preventa ₡2,000',
+    lineup: ['Owen Escobar', 'Pablo Gómez', 'UR Tech', 'Vandergh'],
+    specialGuest: 'Waxcid Sound',
+    videoUrl: '/events/la-casa-del-camaron.mp4',
+    instagramUrl: 'https://www.instagram.com/reel/DZ5XXfxIJTW/',
+  },
   { id: '2', venue: 'Live Set', city: 'Puntarenas', country: 'Costa Rica', date: '2025-05-01', headliner: true, status: 'past', instagramUrl: 'https://www.instagram.com/p/DWh-PGBjKcm/' },
   { id: '3', venue: 'Live Set', city: 'Puntarenas', country: 'Costa Rica', date: '2025-03-15', headliner: true, status: 'past', instagramUrl: 'https://www.instagram.com/p/DSyBkPCAcoZ/' },
   { id: '4', venue: 'Live Set', city: 'Puntarenas', country: 'Costa Rica', date: '2024-03-10', headliner: false, status: 'past', instagramUrl: 'https://www.instagram.com/p/C4uc5PsuSaw/' },
