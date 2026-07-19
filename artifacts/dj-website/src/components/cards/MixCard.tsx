@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
-import { Mix } from '../../data/mock';
+import { Mix } from '../../data';
 import { useAudio } from '../../context/AudioContext';
 import { useLang } from '../../context/LanguageContext';
 

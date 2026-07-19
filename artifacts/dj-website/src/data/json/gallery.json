@@ -1,0 +1,45 @@
+[
+  {
+    "id": "1",
+    "type": "video",
+    "event": "La Casa del Camarón",
+    "color": "#0d0d18",
+    "src": "/events/la-casa-del-camaron.mp4",
+    "thumbnail": ""
+  },
+  {
+    "id": "2",
+    "type": "image",
+    "event": "La Casa del Camarón",
+    "photographer": "",
+    "color": "#1a1a1a"
+  },
+  {
+    "id": "3",
+    "type": "image",
+    "event": "Live Set — Puntarenas",
+    "photographer": "",
+    "color": "#2a2a2a"
+  },
+  {
+    "id": "4",
+    "type": "image",
+    "event": "En el Booth",
+    "photographer": "",
+    "color": "#111"
+  },
+  {
+    "id": "5",
+    "type": "image",
+    "event": "Live Set — Puntarenas",
+    "photographer": "",
+    "color": "#1f1f1f"
+  },
+  {
+    "id": "6",
+    "type": "image",
+    "event": "Live Set — Puntarenas",
+    "photographer": "",
+    "color": "#0d0d0d"
+  }
+]

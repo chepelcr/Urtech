@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '../../context/LanguageContext';
-import { mockVideos } from '../../data/mock';
+import { videos as mockVideos } from '../../data';
 import { VideoCard } from '../cards/VideoCard';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';

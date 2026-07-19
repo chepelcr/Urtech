@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
-import { Video } from '../../data/mock';
+import { Video } from '../../data';
 
 export function VideoCard({ video }: { video: Video }) {
   return (

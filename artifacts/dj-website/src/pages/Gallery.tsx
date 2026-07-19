@@ -1,22 +1,81 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { FloatingPlayer } from '../components/layout/FloatingPlayer';
 import { useLang } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { mockGallery } from '../data/mock';
+import { gallery } from '../data';
+import type { GalleryItem } from '../data';
 import { GalleryCard } from '../components/cards/GalleryCard';
 import { useLightbox } from '../hooks/useLightbox';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
+function LightboxMedia({ item }: { item: GalleryItem }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  if (item.type === 'video') {
+    // Local video file
+    if (item.src) {
+      return (
+        <video
+          ref={videoRef}
+          src={item.src}
+          controls
+          autoPlay
+          playsInline
+          className="w-full h-full object-contain"
+        />
+      );
+    }
+    // YouTube or other external embed
+    if (item.url) {
+      const embedUrl = item.url.includes('watch?v=')
+        ? item.url.replace('watch?v=', 'embed/') + '?autoplay=1'
+        : item.url;
+      return (
+        <iframe
+          src={embedUrl}
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          className="w-full h-full"
+          title={item.event}
+        />
+      );
+    }
+  }
+
+  // Image with real src
+  if (item.src) {
+    return (
+      <img
+        src={item.src}
+        alt={item.event}
+        className="w-full h-full object-contain"
+      />
+    );
+  }
+
+  // Colour placeholder
+  return (
+    <div className="w-full h-full" style={{ backgroundColor: item.color }}>
+      <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+        <h3 className="font-display text-4xl text-white tracking-widest uppercase">{item.event}</h3>
+        {item.photographer && (
+          <p className="font-mono text-sm text-gray-400 mt-2">Photo: {item.photographer}</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function Gallery() {
   const { t } = useLang();
-  const lightbox = useLightbox(mockGallery);
+  const lightbox = useLightbox(gallery);
 
   return (
     <div className="min-h-[100dvh] bg-black text-white w-full pt-20">
       <Navbar />
-      
+
       <main className="max-w-screen-2xl mx-auto px-6 py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,13 +86,13 @@ export default function Gallery() {
           <h1 className="text-6xl md:text-8xl font-display tracking-widest uppercase">{t.gallery.title}</h1>
         </motion.div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-          {mockGallery.map((image, i) => (
-            <GalleryCard 
-              key={image.id} 
-              image={image} 
-              index={i} 
-              onClick={() => lightbox.openLightbox(i)} 
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
+          {gallery.map((item, i) => (
+            <GalleryCard
+              key={item.id}
+              item={item}
+              index={i}
+              onClick={() => lightbox.openLightbox(i)}
             />
           ))}
         </div>
@@ -42,50 +101,56 @@ export default function Gallery() {
       {/* Lightbox */}
       <AnimatePresence>
         {lightbox.isOpen && lightbox.currentItem && (
-          <motion.div 
-            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center"
+          <motion.div
+            className="fixed inset-0 z-[100] bg-black/96 backdrop-blur-xl flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={lightbox.closeLightbox}
           >
-            <button 
+            <button
               onClick={lightbox.closeLightbox}
-              className="absolute top-8 right-8 text-white/50 hover:text-white z-[110] transition-colors"
+              className="absolute top-6 right-6 text-white/50 hover:text-white z-[110] transition-colors"
             >
-              <X size={32} />
+              <X size={28} />
             </button>
 
-            <button 
+            <button
               onClick={(e) => { e.stopPropagation(); lightbox.prevItem(); }}
-              className="absolute left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[110] transition-colors hidden md:block"
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/40 hover:text-white z-[110] transition-colors"
             >
-              <ChevronLeft size={48} strokeWidth={1} />
+              <ChevronLeft size={44} strokeWidth={1} />
             </button>
 
-            <button 
+            <button
               onClick={(e) => { e.stopPropagation(); lightbox.nextItem(); }}
-              className="absolute right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white z-[110] transition-colors hidden md:block"
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/40 hover:text-white z-[110] transition-colors"
             >
-              <ChevronRight size={48} strokeWidth={1} />
+              <ChevronRight size={44} strokeWidth={1} />
             </button>
 
-            <div className="relative w-full max-w-5xl aspect-[4/3] md:aspect-video flex items-center justify-center p-8" onClick={lightbox.closeLightbox}>
-              <motion.div 
-                className="w-full h-full relative"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ type: "spring", bounce: 0.2 }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="absolute inset-0 border border-white/10" style={{ backgroundColor: lightbox.currentItem.color }}>
-                  {/* Image Placeholder */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/80 via-transparent to-transparent">
-                    <h3 className="font-display text-4xl text-white tracking-widest uppercase">{lightbox.currentItem.event}</h3>
-                    <p className="font-mono text-sm text-gray-400 mt-2">Photo by {lightbox.currentItem.photographer}</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            <motion.div
+              className="relative w-full max-w-5xl mx-12 md:mx-24"
+              style={{ aspectRatio: lightbox.currentItem.type === 'video' ? '9/16' : '4/3' }}
+              initial={{ scale: 0.93, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: 'spring', bounce: 0.15 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="absolute inset-0 overflow-hidden border border-white/10">
+                <LightboxMedia item={lightbox.currentItem} />
+              </div>
+
+              {/* Caption */}
+              <div className="mt-4 flex items-center justify-between">
+                <p className="font-display text-lg text-white tracking-widest uppercase">
+                  {lightbox.currentItem.event}
+                </p>
+                <span className="font-mono text-[10px] text-gray-600 tracking-widest">
+                  {lightbox.currentIndex + 1} / {gallery.length}
+                </span>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

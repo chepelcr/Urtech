@@ -1,5 +1,5 @@
 import React from 'react';
-import { Event } from '../../data/mock';
+import { Event } from '../../data';
 import { useLang } from '../../context/LanguageContext';
 import { ArrowUpRight, Instagram } from 'lucide-react';
 

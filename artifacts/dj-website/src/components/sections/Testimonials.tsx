@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '../../context/LanguageContext';
-import { mockTestimonials } from '../../data/mock';
+import { testimonials as mockTestimonials } from '../../data';
 
 export function Testimonials() {
   const { t } = useLang();

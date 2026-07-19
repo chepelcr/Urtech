@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Instagram, Volume2, VolumeX } from 'lucide-react';
-import { Event } from '../../data/mock';
+import { Event } from '../../data';
 
 export function FeaturedEventCard({ event }: { event: Event }) {
   const videoRef = useRef<HTMLVideoElement>(null);

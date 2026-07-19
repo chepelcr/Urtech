@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Release } from '../../data/mock';
+import { Release } from '../../data';
 
 export function MusicCard({ release }: { release: Release }) {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '../../context/LanguageContext';
-import { mockMixes } from '../../data/mock';
+import { mixes as mockMixes } from '../../data';
 import { MixCard } from '../cards/MixCard';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';

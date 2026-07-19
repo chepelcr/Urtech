@@ -1,0 +1,16 @@
+{
+  "artist": {
+    "name": "UR TECH",
+    "alias": "Urtecho",
+    "genres": ["Tech House", "Techno"],
+    "origin": "Miramar, Puntarenas, Costa Rica",
+    "email": "directlyurtech07@gmail.com",
+    "instagram": "https://www.instagram.com/urtech.07",
+    "soundcloud": "https://soundcloud.com/user-42101134"
+  },
+  "track": {
+    "title": "Morning Glory",
+    "apiUrl": "https://api.soundcloud.com/tracks/1514050228",
+    "pageUrl": "https://soundcloud.com/user-42101134/morning-glory"
+  }
+}
