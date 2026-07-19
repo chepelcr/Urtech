@@ -1,21 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Play, Pause } from 'lucide-react';
 import { useSoundCloud } from '../context/SoundCloudContext';
 
-const TRACK_API_URL = 'https://api.soundcloud.com/tracks/1514050228';
 const TRACK_PAGE_URL = 'https://soundcloud.com/user-42101134/morning-glory';
 
-const embedSrc =
-  `https://w.soundcloud.com/player/?url=${encodeURIComponent(TRACK_API_URL)}` +
-  `&color=%23ffffff` +
-  `&auto_play=false` +
-  `&hide_related=true` +
-  `&show_comments=false` +
-  `&show_user=true` +
-  `&show_reposts=false` +
-  `&show_teaser=false` +
-  `&visual=true`;
+function fmt(ms: number) {
+  const s = Math.floor(ms / 1000);
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return `${m}:${sec.toString().padStart(2, '0')}`;
+}
 
 interface SoundCloudEmbedProps {
   title?: string;
@@ -26,14 +21,9 @@ export function SoundCloudEmbed({
   title = 'Morning Glory',
   artist = 'UR TECH',
 }: SoundCloudEmbedProps) {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const { registerWidget } = useSoundCloud();
+  const { isPlaying, position, duration, isReady, togglePlayPause, seekTo } = useSoundCloud();
 
-  const handleLoad = () => {
-    if (iframeRef.current) {
-      registerWidget(iframeRef.current, title);
-    }
-  };
+  const progress = duration > 0 ? position / duration : 0;
 
   return (
     <motion.div
@@ -43,7 +33,7 @@ export function SoundCloudEmbed({
       transition={{ duration: 0.7 }}
       className="w-full"
     >
-      {/* Header */}
+      {/* Header row */}
       <div className="flex items-end justify-between mb-4">
         <div className="flex flex-col gap-1">
           <span className="font-mono text-[10px] text-gray-500 uppercase tracking-[0.2em]">
@@ -64,20 +54,64 @@ export function SoundCloudEmbed({
         </a>
       </div>
 
-      {/* Player iframe */}
-      <div className="w-full border border-white/10 overflow-hidden h-[300px] md:h-[380px]">
-        <iframe
-          ref={iframeRef}
-          title={`${title} — ${artist}`}
-          width="100%"
-          height="100%"
-          scrolling="no"
-          frameBorder="no"
-          allow="autoplay"
-          src={embedSrc}
-          className="block"
-          onLoad={handleLoad}
-        />
+      {/* Player card */}
+      <div className="w-full border border-white/10 bg-[#111] relative overflow-hidden">
+        {/* Abstract artwork bg */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] opacity-60 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.04)_0%,_transparent_60%)] pointer-events-none" />
+
+        <div className="relative z-10 p-8 md:p-12 flex flex-col gap-8">
+          {/* Track info */}
+          <div className="flex flex-col gap-1">
+            <p className="font-display text-3xl md:text-5xl text-white tracking-widest uppercase">{title}</p>
+            <p className="font-mono text-xs text-gray-400 tracking-[0.25em] uppercase">{artist}</p>
+          </div>
+
+          {/* Progress bar */}
+          <div className="flex flex-col gap-2">
+            <div
+              className="w-full h-px bg-white/10 relative cursor-pointer group"
+              onClick={(e) => {
+                if (!isReady) return;
+                const rect = e.currentTarget.getBoundingClientRect();
+                const pct = (e.clientX - rect.left) / rect.width;
+                seekTo(pct);
+              }}
+            >
+              <div
+                className="absolute left-0 top-0 h-px bg-white transition-all duration-300"
+                style={{ width: `${progress * 100}%` }}
+              />
+              {/* Scrubber dot */}
+              <div
+                className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ left: `calc(${progress * 100}% - 4px)` }}
+              />
+            </div>
+            <div className="flex justify-between font-mono text-[10px] text-gray-600">
+              <span>{fmt(position)}</span>
+              <span>{duration > 0 ? fmt(duration) : '--:--'}</span>
+            </div>
+          </div>
+
+          {/* Play / pause */}
+          <div className="flex items-center gap-6">
+            <button
+              onClick={togglePlayPause}
+              disabled={!isReady}
+              className="w-14 h-14 border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+              aria-label={isPlaying ? 'Pause' : 'Play'}
+            >
+              {isPlaying ? <Pause size={20} /> : <Play size={20} className="ml-0.5" />}
+            </button>
+
+            {!isReady && (
+              <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest animate-pulse">
+                Loading…
+              </span>
+            )}
+          </div>
+        </div>
       </div>
 
       <div className="mt-4 h-px bg-white/5" />
